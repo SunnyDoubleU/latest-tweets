@@ -6,7 +6,7 @@ from a Twitter handle of your choice.
 1. Fork the repository
 2. Clone the repository to your device
 
-## Kickstarting Server
+## Server
 1. Navigate to `latest-tweets-server` folder, create an environment folder and enter your Twitter API bearer token.
 2. ## `npm i` to install all server dependencies
 3. ## `npm start` to activate server
