@@ -8,11 +8,11 @@ from a Twitter handle of your choice.
 
 ## Server
 1. Navigate to `latest-tweets-server` folder, create an environment folder and enter your Twitter API bearer token.
-2. ## `npm i` to install all server dependencies
-3. ## `npm start` to activate server
+2. `npm i` to install all server dependencies
+3. `npm start` to activate server
 
 ## Client
 1. Navigate to `latest-tweets-client` folder
-3. ## `npm i`
-4. # `npm start` to run the app in development mode
+3. `npm i`
+4. `npm start` to run the app in development mode
 5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
