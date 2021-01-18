@@ -30,12 +30,11 @@ color: ${props => props.theme.colors.text.tertiary};
 font-size: 14px;
 `
 const TweetContainer: React.FC<ITweetContainerProps> = ({ tweet }) => {
-    console.log(tweet)
     const getMedia = () => {
-        if (tweet.attachments !== null && tweet.attachments[0].media.type === "photo") {
-            return tweet.attachments[0].media.url
-        } else if (tweet.attachments !== null && tweet.attachments[0].media.type === "video") {
-            return tweet.attachments[0].media.preview_image_url
+        if (tweet.attachments !== null && tweet.attachments !== undefined && tweet?.attachments?.[0]?.media?.type === "photo") {
+            return tweet?.attachments?.[0]?.media.url
+        } else if (tweet.attachments !== null && tweet.attachments !== undefined && tweet?.attachments?.[0]?.media.type === "video") {
+            return tweet.attachments?.[0]?.media.preview_image_url
         }
     }
     const media = getMedia()

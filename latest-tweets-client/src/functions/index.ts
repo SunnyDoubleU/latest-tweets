@@ -7,12 +7,15 @@ const convertAttachments = (attachments: IAttachments, mediaList: IMedia[]) => {
     }))
 }
 export const convertData = (tweets: ITweet[], medias: IMedia[]) => {
-    if (tweets !== undefined && tweets.length > 0) {
+    console.log('im at convert')
+    if (tweets !== undefined && tweets.length > 0 && medias !== undefined) {
         return tweets.map((singleTweet: ITweet) => ({
             ...singleTweet,
             attachments: singleTweet.attachments !== undefined ? convertAttachments(singleTweet?.attachments, medias) : null
         })
         )
+    } else if (tweets !== undefined && tweets.length > 0 && medias === undefined) {
+        return tweets
     } else {
         return []
     }

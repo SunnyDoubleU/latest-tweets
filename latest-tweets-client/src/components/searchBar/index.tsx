@@ -6,7 +6,7 @@ import { IConvertedTweet, IMedia, ITweet, IUserInfo } from "../../types"
 import { convertData } from '../../functions'
 import SearchIcon from "../../assets/images/search.png"
 interface ISearchBarProps {
-    setTweets: (tweets: IConvertedTweet[]) => void;
+    setTweets: (tweets: IConvertedTweet[] | ITweet[]) => void;
     setLoading: (loading: boolean) => void;
     setError: (error: string | null) => void;
     setUsername: (username: string) => void;
@@ -53,7 +53,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ setTweets, setLoading, setError,
     const { register, errors, handleSubmit } = useForm({})
 
     const setTweetHandler = useCallback((response: any) => {
-        const convertedData: IConvertedTweet[] = convertData(response.data, response.includes.media)
+        const convertedData: IConvertedTweet[] | ITweet[] = response.includes !== undefined ? convertData(response?.data, response?.includes?.media) : response.data
         setTweets(convertedData)
     }, [])
     const searchUser = async (user: IUserInfo) => {
@@ -66,14 +66,13 @@ const SearchBar: React.FC<ISearchBarProps> = ({ setTweets, setLoading, setError,
                 setLoading(false)
                 setError(null)
             } else {
-                console.log(response)
-                setTweetHandler([])
+                setTweets([])
                 setLoading(false)
                 setError('Oops, something went wrong. Please try again later.')
             }
         } catch (err) {
             console.log('login error', err)
-            setTweetHandler([])
+            setTweets([])
             setLoading(false)
             setError('Oops, something went wrong. Please try again later.')
         }
